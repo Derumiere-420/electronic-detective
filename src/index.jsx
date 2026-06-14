@@ -5,7 +5,6 @@ import store from "./store/store.js";
 import App from "./components/App";
 import WebFont from "webfontloader";
 import { body } from "./utils/globalcss";
-import registerServiceWorker from "./registerServiceWorker";
 
 WebFont.load({
   google: {
@@ -19,4 +18,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-registerServiceWorker();

@@ -47,9 +47,7 @@
 
       return setupData;
     })
-    .catch(error => {
-      console.log("error loading setup data", error);
-    });
+    .catch(() => {});
 }*/
 
 // Fetch the required file and return the JSON data from

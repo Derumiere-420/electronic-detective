@@ -99,10 +99,12 @@ const game = (
       };
     }
     case END_PLAYER_TURN: {
-      const sheetKeys = Object.keys(state.gameData.sheets);
+      const sheetKeys = Object.keys(state.gameData.sheets).filter(
+        key => key !== "numPlayers"
+      );
       const playerIndex = sheetKeys.indexOf(state.playerId.toString());
       const newIndex =
-        playerIndex === sheetKeys.length - 2 ? 0 : playerIndex + 1;
+        playerIndex === sheetKeys.length - 1 ? 0 : playerIndex + 1;
       const newPlayer = sheetKeys[newIndex];
       return {
         ...state,
@@ -129,12 +131,14 @@ const game = (
 
       const newSheets = { ...state.gameData.sheets };
       newSheets.numPlayers = newSheets.numPlayers - 1;
-      const sheetKeys = Object.keys(newSheets);
+      const sheetKeys = Object.keys(newSheets).filter(
+        key => key !== "numPlayers"
+      );
       // Don't consider the numPlayers key when determining who the next
       // player will be once this one is removed
       const currentPlayerIndex = sheetKeys.indexOf(playerId.toString());
       const nextIndex =
-        currentPlayerIndex === sheetKeys.length - 2
+        currentPlayerIndex === sheetKeys.length - 1
           ? 0
           : currentPlayerIndex + 1;
       const newPlayerId = sheetKeys[nextIndex];
@@ -214,7 +218,7 @@ const game = (
       if (
         !data ||
         data.locationId === null ||
-        data.area === null ||
+        data.part === null ||
         data.value === null
       )
         return state;
@@ -236,8 +240,7 @@ const game = (
       return { ...state, gameData: revisedGameData };
     }
     case CREATE_SUSPECT_ALIBI: {
-      console.log("Create alibi", data);
-      if (!data || data.suspecId === null || data.alibiArr === null)
+      if (!data || data.suspectId === null || data.alibiArr === null)
         return state;
 
       const gameData = state.gameData;

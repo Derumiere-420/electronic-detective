@@ -4,7 +4,7 @@ import TextField from "material-ui/TextField";
 import Button from "material-ui/Button";
 import { h2, body } from "../../utils/globalcss";
 import { accuseSuspect } from "../../actions/index";
-import { css } from "react-emotion";
+import { css } from "emotion";
 
 class Accusation extends PureComponent {
   state = { accusation: "" };

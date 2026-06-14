@@ -18,15 +18,19 @@ Rules:
 
 This is not a connected game. Multi-player happens all on one device. Pass around your phone, tablet, or mouse and engage with real people in the real world over a game while you harass each other.
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project uses [Vite](https://vite.dev/) for local development, testing, and production builds.
 
 
 
 ## Installation
 
 * Copy or fork this [repository](https://github.com/thefinitemonkey/electronic-detective)
-* Run 'npm install'
-* Run 'npm start'
+* Use Node.js 20.19 or newer
+* Run `npm install`
+* Run `npm start`
+* Open `http://127.0.0.1:5173/detective/`
+* Run `npm test` for the automated test suite
+* Run `npm run build` for a production build
 
 ## To-Do Items
 

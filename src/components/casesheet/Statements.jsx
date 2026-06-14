@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { updateSuspectStatement } from "../../actions/index";
 import StatementField from "../common/StatementField";
-import { css } from "react-emotion";
+import { css } from "emotion";
 
 export class Statements extends PureComponent {
   render = () => {

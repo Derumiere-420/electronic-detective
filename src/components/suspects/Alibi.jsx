@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { body } from "../../utils/globalcss";
 import { createAlibi } from "../../actions/index";
 
@@ -23,11 +23,15 @@ class Alibi extends PureComponent {
     }
   };
 
-  componentWillReceiveProps = props => {
-    this.props = props;
+  componentDidUpdate = prevProps => {
+    if (
+      prevProps.game.gameData.alibis !== this.props.game.gameData.alibis ||
+      prevProps.suspectId !== this.props.suspectId
+    ) {
     this.setState({
       alibi: this.props.game.gameData.alibis[this.props.suspectId]
     });
+    }
   };
 
   render = () => {

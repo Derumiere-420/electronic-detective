@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import Tabs, { Tab } from "material-ui/Tabs";
 import { connect } from "react-redux";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import CaseSheet from "./casesheet/CaseSheet";
 import Suspects from "./suspects/Suspects";
 import { endPlayerTurn } from "../actions/index";

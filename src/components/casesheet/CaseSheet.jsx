@@ -3,13 +3,12 @@ import { connect } from "react-redux";
 import Facts from "./Facts";
 import Location from "./Location";
 import Statements from "./Statements";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { h2, h3 } from "../../utils/globalcss";
 
 export class CaseSheet extends PureComponent {
   constructor(props) {
     super(props);
-    this.props = props;
 
     const playerId = this.props.game.playerId;
     const locationKeys = Object.keys(

@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { h2, h3 } from "../../utils/globalcss";
 import Alibi from "./Alibi";
 import Questions from "./Questions";

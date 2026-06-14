@@ -4,13 +4,12 @@ import { FormControlLabel } from "material-ui/Form";
 import { connect } from "react-redux";
 import { deepCopy } from "../../utils/builder";
 import { updatePlayerClues } from "../../actions/index";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { body, bodyStrong } from "../../utils/globalcss";
 
 export class Facts extends PureComponent {
   constructor(props) {
     super(props);
-    this.props = props;
 
     const playerId = this.props.game.playerId;
     const locationKeys = Object.keys(
@@ -19,10 +18,6 @@ export class Facts extends PureComponent {
 
     this.state = { playerId, locationKeys };
   }
-
-  componentWillReceiveProps = props => {
-    this.props = props;
-  };
 
   updateClueSelection = (keysPath, selection) => {
     // Update the selection data for the path specified in the clueSelections

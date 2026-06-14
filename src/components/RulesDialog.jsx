@@ -8,9 +8,10 @@ class RulesDialog extends PureComponent {
     dialogOpen: this.props.dialogOpen
   };
 
-  componentWillReceiveProps = props => {
-      console.log("Received props", props);
-    this.setState({ dialogOpen: props.dialogOpen || false });
+  componentDidUpdate = prevProps => {
+    if (prevProps.dialogOpen !== this.props.dialogOpen) {
+      this.setState({ dialogOpen: this.props.dialogOpen || false });
+    }
   };
 
   handleDialogOpen = () => {

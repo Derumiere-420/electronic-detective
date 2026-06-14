@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { body, bodyStrong } from "../../utils/globalcss";
 
 class SuspectListItem extends PureComponent {

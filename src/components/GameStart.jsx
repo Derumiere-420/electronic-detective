@@ -2,14 +2,17 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import Button from "material-ui/Button";
 import { changeGameScreen, setPlayerTurn } from "../actions/index";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { h2, body, bodyStrong } from "../utils/globalcss";
 
 class GameStart extends PureComponent {
-  componentWillReceiveProps = props => {
-    this.props = props;
-    if (props.game.playerId !== null)
+  componentDidUpdate = prevProps => {
+    if (
+      prevProps.game.playerId !== this.props.game.playerId &&
+      this.props.game.playerId !== null
+    ) {
       this.props.changeGameScreen("investigation");
+    }
   };
 
   setPlayerTurn = player => {

@@ -90,6 +90,4 @@ describe("AddressField", () => {
       expect(props.updateLocationAddress.mock.calls[0][3]).toBe("east");
     });
   });
-
-  describe("the input field", () => {});
 });

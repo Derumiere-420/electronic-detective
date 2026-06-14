@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { h2, body, bodyStrong } from "../utils/globalcss";
 import { resetGame } from "../actions/index";
 import Button from "material-ui/Button";
-import { css } from "react-emotion";
+import { css } from "emotion";
 
 class Solved extends PureComponent {
   handlePlayAgain = () => {

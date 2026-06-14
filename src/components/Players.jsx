@@ -12,7 +12,7 @@ import {
 } from "../actions/index";
 
 import * as Builder from "../utils/builder";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { h2 } from "../utils/globalcss";
 
 class Players extends PureComponent {
@@ -67,7 +67,6 @@ class Players extends PureComponent {
       this.props.game.setupData,
       this.state.players
     );
-    console.log("gameData", gameData);
     this.props.finalizeBuildGame(gameData);
     this.props.changeGameScreen("gamestart");
   };

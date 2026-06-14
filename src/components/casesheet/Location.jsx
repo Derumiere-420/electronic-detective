@@ -5,7 +5,7 @@ import { deepCopy } from "../../utils/builder";
 import { updatePlayerClues } from "../../actions/index";
 import OccupantField from "./OccupantField";
 import AddressField from "./AddressField";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import {
   bodyStrong,
   bodyCondensed,
@@ -28,8 +28,14 @@ export class Location extends PureComponent {
     this.props.updatePlayerClues(playerId, newSheet);
   };
 
-  componentWillReceiveProps = props => {
-    this.props = props;
+  componentDidUpdate = prevProps => {
+    const playerId = this.props.game.playerId;
+    const weapon = this.props.game.gameData.sheets[playerId].locations[
+      this.props.locationId
+    ].weapon;
+    if (prevProps.game !== this.props.game && this.state.weapon !== weapon) {
+      this.setState({ weapon });
+    }
   };
 
   render = () => {

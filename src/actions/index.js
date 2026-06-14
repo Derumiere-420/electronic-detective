@@ -230,8 +230,6 @@ export const createAlibi = (
     }
   });
 
-  console.log("Alibi created", alibiArr);
-
   return {
     type: CREATE_SUSPECT_ALIBI,
     playerId,

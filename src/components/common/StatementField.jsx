@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { updateSuspectStatement } from "../../actions/index";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { bodyCondensed } from "../../utils/globalcss";
 
 class Statement extends PureComponent {
@@ -11,12 +11,15 @@ class Statement extends PureComponent {
       .suspectStatements[this.props.suspect.id]
   };
 
-  componentWillReceiveProps = props => {
+  componentDidUpdate = prevProps => {
     const newStatement =
-      props.game.gameData.sheets[this.props.game.playerId].suspectStatements[
+      this.props.game.gameData.sheets[this.props.game.playerId].suspectStatements[
         this.props.suspect.id
       ];
-    if (this.state.statement !== newStatement) {
+    if (
+      prevProps.game !== this.props.game &&
+      this.state.statement !== newStatement
+    ) {
       this.setState({ statement: newStatement });
     }
   };
@@ -46,7 +49,7 @@ class Statement extends PureComponent {
             <TextField
               style={{ fontSize: "13px", width: "100%" }}
               disabled={victim === suspect.id ? true : false}
-              lbael={`${suspect.name}'s statement`}
+              label={`${suspect.name}'s statement`}
               value={this.state.statement}
               onChange={e => this.updateStateStatement(e.target.value)}
               onBlur={e =>

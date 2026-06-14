@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { h3, body } from "../../utils/globalcss";
 import { getQuestionResponse } from "./AnswerLogic";
 import { updateTurnData } from "../../actions/index";

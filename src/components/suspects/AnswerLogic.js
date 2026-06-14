@@ -93,28 +93,29 @@ const check38Location = (game, subjectId, response) => {
   // Display the location of the .38 from the collection of weapons data
   let weaponLoc = "";
   Object.entries(game.gameData.locations).forEach(locArr => {
-    if (locArr[1].weapon.type === ".38") {
+    if (locArr[1].weapon && locArr[1].weapon.type === ".38") {
       weaponLoc = locArr[0];
     }
   });
 
-  const display =
-    response.affirmative + game.gameData.locations[weaponLoc].name;
+  const display = weaponLoc
+    ? response.affirmative + game.gameData.locations[weaponLoc].name
+    : "";
   return { answer: display };
 };
 
 const check45Location = (game, subjectId, response) => {
   // Display the location of the .45 from the collection of weapons data
   let weaponLoc = "";
-  console.log("entries", Object.entries(game.gameData.locations));
   Object.entries(game.gameData.locations).forEach(locArr => {
-    if (locArr[1].weapon.type === ".45") {
+    if (locArr[1].weapon && locArr[1].weapon.type === ".45") {
       weaponLoc = locArr[0];
     }
   });
 
-  const display =
-    response.affirmative + game.gameData.locations[weaponLoc].name;
+  const display = weaponLoc
+    ? response.affirmative + game.gameData.locations[weaponLoc].name
+    : "";
   return { answer: display };
 };
 
@@ -148,12 +149,10 @@ const checkPlaceNames = (game, subjectId, response) => {
 const checkWeaponLocation = (game, subjectId, response) => {
   // Get the hash map
   const hashMap = makeLocationHashMap(game.gameData);
+  const location = game.gameData.locations[hashMap[subjectId]];
 
   // Check whether the character was at a location with a weapon
-  const display =
-    game.gameData.locations[hashMap[subjectId]].weapon === ""
-      ? response.negative
-      : response.affirmative;
+  const display = location && location.weapon ? response.affirmative : response.negative;
 
   return { answer: display };
 };
@@ -161,10 +160,11 @@ const checkWeaponLocation = (game, subjectId, response) => {
 const checkPrints = (game, subjectId, response, targetWeapon) => {
   // Get the hash map
   const hashMap = makeLocationHashMap(game.gameData);
-  const weapon = game.gameData.locations[hashMap[subjectId]].weapon;
+  const location = game.gameData.locations[hashMap[subjectId]];
+  const weapon = location && location.weapon;
 
   // one is trickier. Only people who were at a location with a weapon can answer.
-  if (weapon === null || weapon.type !== targetWeapon) {
+  if (!weapon || weapon.type !== targetWeapon) {
     return { answer: response.unknown };
   }
 

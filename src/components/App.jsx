@@ -8,18 +8,17 @@ import StartTurn from "./StartTurn";
 import Unsolved from "./Unsolved";
 import Solved from "./Solved";
 import { h1, app, body } from "../utils/globalcss";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import RulesDialog from "./RulesDialog";
 
 class App extends Component {
   state = { dialogOpen: false };
 
   shouldComponentUpdate = (props, state) => {
-    const shouldRender =
+    return (
       props.game.screen !== this.props.game.screen ||
-      state.dialogOpen !== this.state.dialogOpen;
-    this.props = props;
-    return shouldRender;
+      state.dialogOpen !== this.state.dialogOpen
+    );
   };
 
   handleShowRules = e => {
@@ -28,7 +27,6 @@ class App extends Component {
   };
 
   handleDialogOpen = () => {
-    console.log("Handling dialog open");
     this.setState({ dialogOpen: true });
   };
 

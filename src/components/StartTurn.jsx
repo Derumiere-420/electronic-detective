@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { h2 } from "../utils/globalcss";
 import Button from "material-ui/Button";
 import { changeGameScreen } from "../actions/index";
-import { css } from "react-emotion";
+import { css } from "emotion";
 
 class StartTurn extends PureComponent {
   render = () => {

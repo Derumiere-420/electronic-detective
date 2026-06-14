@@ -137,6 +137,7 @@ export function buildGame(setupData, players) {
   randLocationsArr.forEach(location => {
     const id = location.id;
     delete location.id;
+    if (location.weapon === undefined) location.weapon = "";
     newLocationsObj[id] = location;
   });
 

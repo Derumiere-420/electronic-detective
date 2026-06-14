@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { getSetupData, changeGameScreen } from "../actions/index";
 import {CircularProgress} from "material-ui/Progress";
-import { css } from "react-emotion";
+import { css } from "emotion";
 import { h2 } from "../utils/globalcss";
 
 class Loader extends PureComponent {
@@ -17,11 +17,10 @@ class Loader extends PureComponent {
     this.props.getSetupData();
   };
 
-  componentWillReceiveProps = props => {
-    this.props = props;
+  componentDidUpdate = prevProps => {
     // Updated props and a loading state means we're ready to
     // set up a game (all the setup data has finished loading)
-    if (this.state.loading) {
+    if (this.state.loading && prevProps.game.setupData !== this.props.game.setupData) {
       this.setState({ loading: false });
       this.props.changeGameScreen("players");
     }
