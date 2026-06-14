@@ -6,6 +6,7 @@ import Alibi from "./Alibi";
 import Questions from "./Questions";
 import StatementField from "../common/StatementField";
 import { updateTurnData } from "../../actions/index";
+import { publicPath } from "../../utils/publicUrl";
 
 class Interrogation extends PureComponent {
   state = { questionsRemaining: this.props.game.turn.questionsRemaining };
@@ -42,14 +43,14 @@ class Interrogation extends PureComponent {
               <div>
                 <img
                   className={characterImage}
-                  src={`./images/characters/${character.images.portrait}`}
+                  src={publicPath(`/images/characters/${character.images.portrait}`)}
                   alt={`${character.name} portrait`}
                 />
               </div>
               <div>
                 <img
                   className={characterImage}
-                  src={`./images/characters/${character.images.profile}`}
+                  src={publicPath(`/images/characters/${character.images.profile}`)}
                   alt={`${character.name} profile`}
                 />
               </div>

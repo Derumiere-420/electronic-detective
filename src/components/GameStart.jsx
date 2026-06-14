@@ -4,6 +4,7 @@ import Button from "material-ui/Button";
 import { changeGameScreen, setPlayerTurn } from "../actions/index";
 import { css } from "emotion";
 import { h2, body, bodyStrong } from "../utils/globalcss";
+import { publicPath } from "../utils/publicUrl";
 
 class GameStart extends PureComponent {
   componentDidUpdate = prevProps => {
@@ -26,7 +27,7 @@ class GameStart extends PureComponent {
     const victimId = gameData.victim;
     const victim = setupData.characters[victimId];
     const scene = setupData.locations[gameData.scene].name;
-    const imgSource = `/images/characters/${victim.images.portrait}`;
+    const imgSource = publicPath(`/images/characters/${victim.images.portrait}`);
 
     return (
       <div className={container}>
@@ -39,7 +40,7 @@ class GameStart extends PureComponent {
             </div>
             <div className={framecontainer}>
               <img
-                src={`/images/funeral_frame.png`}
+                src={publicPath(`/images/funeral_frame.png`)}
                 alt={`Frame`}
                 width={`300px`}
               />

@@ -4,6 +4,7 @@ import { h2, body, bodyStrong } from "../utils/globalcss";
 import { changeGameScreen, resetGame } from "../actions/index";
 import Button from "material-ui/Button";
 import { css } from "emotion";
+import { publicPath } from "../utils/publicUrl";
 
 class Unsolved extends PureComponent {
   state = { gameOver: null };
@@ -50,11 +51,11 @@ class Unsolved extends PureComponent {
             </div>
             <div className={trkPortrait}>
               <img
-                src={`/images/characters/${
+                src={publicPath(`/images/characters/${
                   this.props.game.setupData.characters[
                     this.props.game.gameData.murderer
                   ].images.portrait
-                }`}
+                }`)}
                 alt={"Murderer Profile"}
               />
             </div>

@@ -5,14 +5,15 @@ import {getSetupDataFile} from "../api/Api";
 
 export function* getSetupDataSaga() {
   yield take(GET_SETUP_DATA);
+  const publicUrl = process.env.PUBLIC_URL || "";
 
   const [sheet, characters, locations, questions, weapons, addresses] = yield all([
-    call(getSetupDataFile, "/json/casesheet.json"),
-    call(getSetupDataFile, "/json/characters.json"),
-    call(getSetupDataFile, "/json/locations.json"),
-    call(getSetupDataFile, "/json/questions.json"),
-    call(getSetupDataFile, "/json/weapons.json"),
-    call(getSetupDataFile, "/json/addresses.json")
+    call(getSetupDataFile, `${publicUrl}/json/casesheet.json`),
+    call(getSetupDataFile, `${publicUrl}/json/characters.json`),
+    call(getSetupDataFile, `${publicUrl}/json/locations.json`),
+    call(getSetupDataFile, `${publicUrl}/json/questions.json`),
+    call(getSetupDataFile, `${publicUrl}/json/weapons.json`),
+    call(getSetupDataFile, `${publicUrl}/json/addresses.json`)
   ]);
 
   yield put({

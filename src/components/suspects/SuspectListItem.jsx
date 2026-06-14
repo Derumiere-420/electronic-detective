@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { css } from "emotion";
 import { body, bodyStrong } from "../../utils/globalcss";
+import { publicPath } from "../../utils/publicUrl";
 
 class SuspectListItem extends PureComponent {
   state = { questionsVisible: false };
@@ -26,7 +27,7 @@ class SuspectListItem extends PureComponent {
         <div className={suspectPortrait}>
           <img
             className={suspectPortraitImage}
-            src={`./images/characters/${character.images.portrait}`}
+            src={publicPath(`/images/characters/${character.images.portrait}`)}
             alt={`${character.name} portrait`}
           />
         </div>
@@ -98,7 +99,7 @@ const suspectPortraitImage = css`
 `;
 
 const suspectAsVictim = css`
-  background-image: url("./images/deceased_stamp.png");
+  background-image: url("${publicPath("/images/deceased_stamp.png")}");
   background-repeat: no-repeat;
   position: absolute;
   top: 0;

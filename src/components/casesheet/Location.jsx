@@ -10,6 +10,7 @@ import {
   bodyStrong,
   bodyCondensed,
 } from "../../utils/globalcss";
+import { publicPath } from "../../utils/publicUrl";
 
 export class Location extends PureComponent {
   state = {
@@ -134,7 +135,7 @@ const relativePosition = css`
 `
 
 const crimeScene = css`
-  background-image: url("./images/policetape.png");
+  background-image: url("${publicPath("/images/policetape.png")}");
   background-size: 100%;
   position: absolute;
   top: 0;

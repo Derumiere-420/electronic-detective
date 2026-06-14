@@ -5,6 +5,7 @@ export default defineConfig(({ mode }) => ({
   base: "/detective/",
   plugins: [react({ jsxRuntime: "classic" })],
   define: {
+    global: "globalThis",
     "process.env.NODE_ENV": JSON.stringify(
       mode === "production" ? "production" : "development"
     ),
